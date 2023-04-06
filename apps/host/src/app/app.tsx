@@ -1,12 +1,10 @@
-import * as React from "react";
+import * as React from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
+import { loadRemoteModule } from '@finlab-frontend/load-remote-module';
+import NxWelcome from './nx-welcome';
 
-import NxWelcome from "./nx-welcome";
-
-import { Link, Route, Routes } from "react-router-dom";
-
-const Auth = React.lazy(() => import("auth/Module"));
-
-const WorkTime = React.lazy(() => import("work-time/Module"));
+const Auth = React.lazy(async () => await loadRemoteModule('auth', './Module'));
+const WorkTime = React.lazy(async () => await loadRemoteModule('work-time', './Module'));
 
 export function App() {
   return (

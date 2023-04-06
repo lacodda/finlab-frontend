@@ -1,0 +1,4 @@
+{
+  "auth": "http://localhost:4201",
+  "work-time": "http://localhost:4202"
+}
