@@ -40,8 +40,8 @@ export async function loadRemoteModule(remoteName: string, moduleName: string) {
   return Module;
 }
 
-function loadModule(url: string) {
-  return import(/* webpackIgnore:true */ url);
+async function loadModule(url: string) {
+  return await import(/* webpackIgnore:true */ url);
 }
 
 let initialSharingScopeCreated = false;

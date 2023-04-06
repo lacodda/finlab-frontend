@@ -1,7 +1,7 @@
 import { setRemoteDefinitions } from '@finlab-frontend/load-remote-module';
-import("./bootstrap");
+import('./bootstrap');
 
 fetch('/assets/module-federation.manifest.json')
-  .then((res) => res.json())
-  .then((definitions) => setRemoteDefinitions(definitions))
-  .then(() => import('./bootstrap').catch((err) => console.error(err)));
+  .then(async (res) => await res.json())
+  .then((definitions) => { setRemoteDefinitions(definitions); })
+  .then(async () => await import('./bootstrap').catch((err) => { console.error(err); }));
