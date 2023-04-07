@@ -5,7 +5,8 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './app/app';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root')
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+  document.getElementById('root') as HTMLElement
 );
 root.render(
   <StrictMode>

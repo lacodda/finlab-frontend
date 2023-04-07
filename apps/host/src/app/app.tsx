@@ -6,7 +6,7 @@ import NxWelcome from './nx-welcome';
 const Auth = React.lazy(async () => await loadRemoteModule('auth', './Module'));
 const WorkTime = React.lazy(async () => await loadRemoteModule('work-time', './Module'));
 
-export function App() {
+export function App(): JSX.Element {
   return (
     <React.Suspense fallback={null}>
       <ul>

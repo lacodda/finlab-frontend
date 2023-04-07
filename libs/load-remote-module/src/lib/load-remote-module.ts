@@ -2,27 +2,27 @@ export type ResolveRemoteUrlFunction = (
   remoteName: string
 ) => string | Promise<string>;
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 declare const __webpack_init_sharing__: (scope: 'default') => Promise<void>;
+// eslint-disable-next-line @typescript-eslint/naming-convention
 declare const __webpack_share_scopes__: { default: unknown };
 
 let resolveRemoteUrl: ResolveRemoteUrlFunction;
 
-export function setRemoteUrlResolver(
-  _resolveRemoteUrl: ResolveRemoteUrlFunction
-) {
+export function setRemoteUrlResolver(_resolveRemoteUrl: ResolveRemoteUrlFunction): void {
   resolveRemoteUrl = _resolveRemoteUrl;
 }
 
 let remoteUrlDefinitions: Record<string, string>;
 
-export function setRemoteDefinitions(definitions: Record<string, string>) {
+export function setRemoteDefinitions(definitions: Record<string, string>): void {
   remoteUrlDefinitions = definitions;
 }
 
 const remoteModuleMap = new Map<string, unknown>();
 const remoteContainerMap = new Map<string, unknown>();
 
-export async function loadRemoteModule(remoteName: string, moduleName: string) {
+export async function loadRemoteModule(remoteName: string, moduleName: string): Promise<any> {
   const remoteModuleKey = `${remoteName}:${moduleName}`;
   if (remoteModuleMap.has(remoteModuleKey)) {
     return remoteModuleMap.get(remoteModuleKey);
@@ -40,13 +40,13 @@ export async function loadRemoteModule(remoteName: string, moduleName: string) {
   return Module;
 }
 
-async function loadModule(url: string) {
+async function loadModule(url: string): Promise<any> {
   return await import(/* webpackIgnore:true */ url);
 }
 
 let initialSharingScopeCreated = false;
 
-async function loadRemoteContainer(remoteName: string) {
+async function loadRemoteContainer(remoteName: string): Promise<any> {
   if (!resolveRemoteUrl && !remoteUrlDefinitions) {
     throw new Error(
       'Call setRemoteDefinitions or setRemoteUrlResolver to allow Dynamic Federation to find the remote apps correctly.'

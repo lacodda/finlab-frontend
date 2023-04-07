@@ -3,7 +3,7 @@ import styles from './app.module.scss';
 
 import NxWelcome from './nx-welcome';
 
-export function App() {
+export function App(): JSX.Element {
   return (
     <>
       <NxWelcome title="work-time" />
