@@ -15,6 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@finlab-frontend/api": ["libs/api/src/index.ts"],
+      "@finlab-frontend/hooks": ["libs/hooks/src/index.ts"],
       "@finlab-frontend/load-remote-module": [
         "libs/load-remote-module/src/index.ts"
       ],
