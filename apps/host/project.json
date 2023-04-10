@@ -19,7 +19,8 @@
         "styles": ["apps/host/src/styles.scss"],
         "scripts": [],
         "isolatedConfig": true,
-        "webpackConfig": "apps/host/webpack.config.js"
+        "webpackConfig": "apps/host/webpack.config.js",
+        "postcssConfig": "postcss.config.js"
       },
       "configurations": {
         "development": {

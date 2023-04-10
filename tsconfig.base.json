@@ -10,18 +10,30 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@finlab-frontend/api": ["libs/api/src/index.ts"],
-      "@finlab-frontend/hooks": ["libs/hooks/src/index.ts"],
+      "@finlab-frontend/api": [
+        "libs/api/src/index.ts"
+      ],
+      "@finlab-frontend/hooks": [
+        "libs/hooks/src/index.ts"
+      ],
       "@finlab-frontend/load-remote-module": [
         "libs/load-remote-module/src/index.ts"
       ],
-      "@finlab-frontend/ui": ["libs/ui/src/index.ts"]
+      "@finlab-frontend/ui": [
+        "libs/ui/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
