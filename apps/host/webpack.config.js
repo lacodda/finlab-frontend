@@ -6,7 +6,6 @@ const coreLibraries = new Set([
   'react',
   'react-dom',
   'react-router-dom',
-  '@microfrontends/load-remote-module',
 ]);
 
 const baseConfig = require("./module-federation.config");
