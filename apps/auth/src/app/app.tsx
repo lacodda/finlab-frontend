@@ -1,16 +1,15 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
-import { Ui } from '@finlab-frontend/ui';
-
-import NxWelcome from './nx-welcome';
+import { Route, Routes } from 'react-router-dom';
+import Signin from './signin';
+import Signup from './signup';
 
 export function App(): JSX.Element {
   return (
-    <>
-      <NxWelcome title="auth" />
-      <Ui />
-      <div />
-    </>
+    <div>
+      <Routes>
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </div>
   );
 }
 
