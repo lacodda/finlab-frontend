@@ -19,7 +19,7 @@ const AdminLayout = ({ children }: AdminLayoutProps): JSX.Element => {
           <Link className='ml-auto' to='/user'>{user?.displayName ?? user.email}</Link>
           <Button className='ml-4' onClick={signOut}>Log Out</Button>
           </>)
-          : <Link className='ml-auto' to='/auth/login'><Button>Log In</Button></Link>
+          : <Link className='ml-auto' to='/auth/signin'><Button>Log In</Button></Link>
         }
       </Navbar>
       <section className='grid grid-rows-Admin-layout min-h-screen gap-4'>

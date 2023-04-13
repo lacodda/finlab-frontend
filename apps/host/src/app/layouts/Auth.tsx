@@ -1,12 +1,12 @@
 
-import { type FunctionComponent, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { Footer, Navbar } from '../components';
 
 export interface AuthLayoutProps {
   children: ReactNode;
 }
 
-const AuthLayout = ({ children }: AuthLayoutProps): JSX.Element => {
+export const AuthLayout = ({ children }: AuthLayoutProps): JSX.Element => {
   return (
     <>
       <Navbar color='transparent'/>
@@ -16,14 +16,4 @@ const AuthLayout = ({ children }: AuthLayoutProps): JSX.Element => {
       </section>
     </>
   );
-};
-
-export const withAuthLayout = <T extends Record<string, unknown>>(Component: FunctionComponent<T>) => {
-  return function withLayoutComponent(props: T): JSX.Element {
-    return (
-      <AuthLayout>
-        <Component {...props} />
-      </AuthLayout>
-    );
-  };
 };
