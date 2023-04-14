@@ -8,7 +8,6 @@ function SignIn(): JSX.Element {
   const [password, setPassword] = useState<string>('');
   const { signInError, signIn } = useAuth();
   const SignIn = (): void => {
-    console.log('signin', email);
     signIn({ email, password });
   };
   const handleKeyDown = (e: KeyboardEvent): void => {
