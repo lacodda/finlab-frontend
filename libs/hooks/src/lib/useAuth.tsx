@@ -101,20 +101,20 @@ export function useProvideAuth(): IAuthContext {
   useEffect(() => {
     if (!signUpData?.register.email) return;
 
-    navigate('/auth/login');
+    navigate('/auth/signin');
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [signUpData]);
 
   function signOut(): void {
     setToken('');
     setUser(null);
-    navigate('/auth/login');
+    navigate('/auth/signin');
   }
 
   return { user, signIn, signInError, signUp, signUpError, signOut };
 }
 
-export function useRequireAuth(redirectUrl = '/auth/login'): IAuthContext {
+export function useRequireAuth(redirectUrl = '/auth/signin'): IAuthContext {
   const auth = useAuth();
   const navigate = useNavigate();
   // If auth.user is false that means we're not
