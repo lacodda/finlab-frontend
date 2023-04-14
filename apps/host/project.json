@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/host/src",
   "projectType": "application",
+  "implicitDependencies": ["auth", "work-time"],
   "targets": {
     "build": {
       "executor": "@nrwl/webpack:webpack",
