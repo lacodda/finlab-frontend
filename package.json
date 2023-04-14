@@ -4,6 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start": "nx run-many --target=serve --all --parallel --maxParallel=100",
+    "build": "nx run-many --target=build --all --parallel --maxParallel=100",
+    "serve-static": "nx run-many --target=serve-static --all --parallel --maxParallel=100",
     "lint": "nx lint --fix",
     "lint-all": "nx run-many --target=lint --all --parallel --maxParallel=100"
   },
