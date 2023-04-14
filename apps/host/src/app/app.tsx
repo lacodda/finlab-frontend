@@ -4,6 +4,7 @@ import { MainPage } from './pages';
 import { useAuth, ProvideAuth } from '@finlab-frontend/hooks';
 import wrapComponent from './ModuleFederationWrapper/wrapComponent';
 import { AuthLayout } from './layouts';
+import { LoadingBar } from '@finlab-frontend/ui';
 
 // wrapComponent is an HOC with an ErrorBoundary & React.Suspense to lazy load the module/MicroFrontend
 const AuthApp = wrapComponent(React.lazy(async () => await import('auth/Module')));
@@ -22,7 +23,7 @@ export function App(): JSX.Element {
             element={
               <AuthLayout>
                 <AuthApp
-                  delayed={<div>Loading...</div>}
+                  delayed={<LoadingBar />}
                   error={<div>Error auth remote</div>}
                 />
               </AuthLayout>
@@ -32,7 +33,7 @@ export function App(): JSX.Element {
             path="/work-time"
             element={
               <WorkTimeApp
-                delayed={<div>Loading...</div>}
+                delayed={<LoadingBar />}
                 error={<div>Error work-time remote</div>}
               />
             }
