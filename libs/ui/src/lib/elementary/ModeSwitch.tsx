@@ -13,6 +13,7 @@ export const ModeSwitch = ({ children, className, ...props }: EmptyProps): JSX.E
   useEffect(() => { setMounted(true); }, []);
 
   const ModeSwitchIcon = (): JSX.Element => {
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     if (!mounted) return <></>;
     if (isDark) {
       return <SunIcon className='h-6 w-6'/>;
