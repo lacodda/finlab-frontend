@@ -1,14 +1,17 @@
 
-import { type DetailedHTMLProps, type HTMLAttributes, useEffect, useState } from 'react';
+import { type DetailedHTMLProps, type HTMLAttributes, useEffect, useState, type Dispatch } from 'react';
 import cn from 'classnames';
-import { CreateTimestamp } from './CreateTimestamp';
+// import { CreateTimestamp } from './CreateTimestamp';
 import { Button } from '@finlab-frontend/ui';
 import { type Timestamp, Timestamps } from '../entities';
 
-export interface UserProfileProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> { }
+export interface WorkTimeProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  timestamp?: Timestamp;
+  setTimestamp: Dispatch<Timestamp>;
+}
 
-export const UserProfile = ({ className, ...props }: UserProfileProps): JSX.Element => {
-  const [timestamp, setTimestamp] = useState<Timestamp>();
+export const WorkTime = ({ className, timestamp, setTimestamp, ...props }: WorkTimeProps): JSX.Element => {
+  // const [timestamp, setTimestamp] = useState<Timestamp>();
   const [timestampList, setTimestampList] = useState<Timestamp[]>([]);
   const [timestampError, setTimestampError] = useState<Error>();
   const timestamps = new Timestamps();
@@ -36,7 +39,7 @@ export const UserProfile = ({ className, ...props }: UserProfileProps): JSX.Elem
           <Button className='w-full justify-center font-bold uppercase' onClick={() => { void item.delete(); }}>Delete</Button>
         </div>)}
       </div>
-      <CreateTimestamp value={timestamp} />
+      {/* <CreateTimestamp value={timestamp} /> */}
     </div>
   );
 };

@@ -1,14 +1,14 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
-
-import NxWelcome from './nx-welcome';
+import { WorkTime } from './components/WorkTime';
+import { CreateTimestamp } from './components/CreateTimestamp';
+import { useState } from 'react';
+import { type Timestamp } from './entities';
 
 export function App(): JSX.Element {
+  const [timestamp, setTimestamp] = useState<Timestamp>();
   return (
     <>
-      <NxWelcome title="work-time" />
-
-      <div />
+      <WorkTime timestamp={timestamp} setTimestamp={setTimestamp} />
+      <CreateTimestamp value={timestamp} />
     </>
   );
 }
