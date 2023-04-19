@@ -9,14 +9,15 @@ export interface AdminLayoutProps {
   children: ReactNode;
 }
 
-const AdminLayout = ({ children }: AdminLayoutProps): JSX.Element => {
+export const AdminLayout = ({ children }: AdminLayoutProps): JSX.Element => {
   const { user, signOut } = useAuth();
   return (
     <>
       <Navbar>
         { user?.email
           ? (<>
-          <Link className='ml-auto' to='/user'>{user?.displayName ?? user.email}</Link>
+          <Link className='ml-auto' to='/work-time'>Work time</Link>
+          <Link className='ml-4' to='/user'>{user?.displayName ?? user.email}</Link>
           <Button className='ml-4' onClick={signOut}>Sign Out</Button>
           </>)
           : <Link className='ml-auto' to='/auth/signin'><Button>Sign In</Button></Link>
