@@ -4,7 +4,6 @@ import { Timestamp } from './timestamp.entity';
 
 export class Timestamps {
   public timestampList: Timestamp[] = [];
-  public loading = false;
   public error?: CombinedError;
   public selected?: Timestamp;
 

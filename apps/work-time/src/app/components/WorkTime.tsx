@@ -1,8 +1,7 @@
 
 import { type DetailedHTMLProps, type HTMLAttributes, useEffect, useState, type Dispatch } from 'react';
 import cn from 'classnames';
-// import { CreateTimestamp } from './CreateTimestamp';
-import { Button } from '@finlab-frontend/ui';
+import { Button, LoadingBar } from '@finlab-frontend/ui';
 import { type Timestamp, Timestamps } from '../entities';
 
 export interface WorkTimeProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -11,15 +10,17 @@ export interface WorkTimeProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
 }
 
 export const WorkTime = ({ className, timestamp, setTimestamp, ...props }: WorkTimeProps): JSX.Element => {
-  // const [timestamp, setTimestamp] = useState<Timestamp>();
   const [timestampList, setTimestampList] = useState<Timestamp[]>([]);
   const [timestampError, setTimestampError] = useState<Error>();
+  const [timestampLoading, setTimestampLoading] = useState<boolean>();
   const timestamps = new Timestamps();
 
   async function getTimestamps(): Promise<void> {
+    setTimestampLoading(true);
     await timestamps.fetch({ raw: true });
     setTimestampList(timestamps.timestampList);
     setTimestampError(timestamps.error);
+    setTimestampLoading(false);
   }
 
   useEffect(() => {
@@ -30,8 +31,8 @@ export const WorkTime = ({ className, timestamp, setTimestamp, ...props }: WorkT
   return (
     <div className={cn(className)}>
       {timestampError && <p>There is an error!</p>}
-      {/* {timestamps.loading && <p>Loading...</p>} */}
-      <Button className='w-full justify-center font-bold uppercase' onClick={() => { void getTimestamps(); }}>Ok</Button>
+      {timestampLoading && <LoadingBar />}
+      <Button className='w-full mb-4 justify-center font-bold uppercase' onClick={() => { void getTimestamps(); }}>Update</Button>
       <div className='grid grid-cols-3 justify-center items-center gap-4'>
         {timestampList.map((item, k) => <div key={k} className='contents cursor-pointer' onClick={() => { setTimestamp(item); }}>
           <div>{item.timestamp.toISOString()}</div>
@@ -39,7 +40,6 @@ export const WorkTime = ({ className, timestamp, setTimestamp, ...props }: WorkT
           <Button className='w-full justify-center font-bold uppercase' onClick={() => { void item.delete(); }}>Delete</Button>
         </div>)}
       </div>
-      {/* <CreateTimestamp value={timestamp} /> */}
     </div>
   );
 };

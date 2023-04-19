@@ -12,17 +12,15 @@ export interface CreateTimestampProps extends DetailedHTMLProps<HTMLAttributes<H
 export const CreateTimestamp = ({ className, value, ...props }: CreateTimestampProps): JSX.Element => {
   const [timestampStr, setTimestampStr] = useState<string>('');
   const [type, setType] = useState<TimestampType>(TimestampType.Start);
-  const [timestamp, setTimestamp] = useState<Timestamp>(new Timestamp());
 
   async function save(): Promise<void> {
     await new Timestamp().setTimestamp(timestampStr).setType(type).save();
   }
 
   useEffect(() => {
-    setTimestamp(new Timestamp(value));
-    setTimestampStr(timestamp.timestamp.toISOString());
-    setType(timestamp.type);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    const { timestamp, type } = new Timestamp(value);
+    setTimestampStr(timestamp.toISOString());
+    setType(type);
   }, [value]);
 
   return (
